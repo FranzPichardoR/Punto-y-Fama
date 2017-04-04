@@ -4,26 +4,51 @@
 
 using namespace std;
 
-int main()
+int getRandom()
 {
-    int random;
+    int random, x1, x2, x3, x4;
 
     srand (time(NULL));
 
-    random = rand() % 1000 + 8999;
+    x1 = rand() % 9+1;
 
-    cout << random << endl;
+    do
+    {
+        x2 = rand() % 9+1;
+        if(x2 == x1)
+            x2 = rand() % 9+1;
+    }
 
-    int randomarray[4];
+    while(x2 == x1);
 
-    randomarray[0] = random/1000;
-    randomarray[1] = (random/100)%10;
-    randomarray[2] = (random/10)%10;
-    randomarray[3] = random%10;
+    do
+    {
+        x3 = rand() % 9+1;
+        if(x3 == x1 || x3 == x2)
+            x3 = rand() % 9+1;
+    }
+    while(x3 == x1 || x3 == x2);
 
-    cout << endl;
+    do
+    {
+        x4 = rand() % 9+1;
+        if(x4 == x1 || x4 == x2 || x4 == x3)
+            x4 = rand() % 9+1;
+    }
+    while(x4 == x1 || x4 == x2 || x4 == x3);
 
-    int x, arrayx[4];
+    random = (x1*1000) + (x2*100) + (x3*10) + x4;
+
+    return random;
+}
+
+int main()
+{
+    int x, arrayx[4], randomNum, randomarray[4];
+
+    randomNum = getRandom();
+
+    cout << randomNum << endl;
 
     cout << "Digite el numero de 4 digitos: " << endl;
     while(x<1000 || x>9999)

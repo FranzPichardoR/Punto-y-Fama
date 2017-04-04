@@ -1,4 +1,6 @@
 # depslib dependency file v1.0
-1491320462 source:c:\users\franz\desktop\uni\programacion aplicada\punto y fama\main.cpp
+1491349490 source:c:\users\franz\desktop\uni\programacion aplicada\punto y fama\main.cpp
 	<iostream>
+	<stdlib.h>
+	<time.h>
 
