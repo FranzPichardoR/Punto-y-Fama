@@ -147,7 +147,7 @@ int main()
 
         cout << endl << "Intento #" << counter+2;
 
-        if(answers[0]=='F' && answers[3]=='F')
+        if(answers[0]=='F' && answers[1]=='F' && answers[2]=='F' && answers[3]=='F')
         {
             cout << endl << "Ha ganado el juego de Punto y Fama!" << endl << "El numero aleatorio era: " << randomNum << endl;
             break;
