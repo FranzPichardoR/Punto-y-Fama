@@ -68,6 +68,7 @@ int checkNum(int x)
 int main()
 {
     int x, arrayx[4], randomNum, randomarray[4], counter=0, newx;
+    char answers[4];
 
     randomNum = getRandom();
 
@@ -76,29 +77,22 @@ int main()
     randomarray[2] = (randomNum/10)%10;
     randomarray[3] = randomNum%10;
 
-    cout << randomNum << endl;
-
     for(counter=0; counter<10; counter++)
     {
         do
         {
-            cout << "Digite el numero de 4 digitos: " << endl;
+            cout << "Digite un numero de 4 digitos: " << endl;
             cin >> x;
             if(x<1000 || x>9999)
-            {
                 cout << "El numero debe ser de 4 digitos." << endl;
-                counter--;
-            }
+
             newx = checkNum(x);
 
             if(newx!=x)
                 x=newx;
 
             if(x==0)
-            {
                 cout << "El numero tiene digitos repetidos." << endl;
-                counter--;
-            }
         }
         while(x<1000 || x>9999 || x==0);
 
@@ -111,14 +105,60 @@ int main()
             for(int k=0; k<4; k++)
             {
                 if(arrayx[i] == randomarray[k] && i!=k)
-                    cout << "P";
+                {
+                    for(int j=0; j<4; j++)
+                    {
+                        if(answers[j]=='P' || answers[j]=='F')
+                            continue;
+                        else
+                        {
+                            answers[j] = 'P';
+                            break;
+                        }
+                    }
+                }
 
                 else if(arrayx[i] == randomarray[k] && i==k)
-                    cout << "F";
+                {
+                    for(int j=0; j<4; j++)
+                    {
+                        if(answers[j]=='P' || answers[j]=='F')
+                            continue;
+                        else
+                        {
+                            answers[j] = 'F';
+                            break;
+                        }
+                    }
+                }
             }
+
+        system("CLS");
+
+        cout << "El ultimo numero que digito fue: " << x << endl;
+
+        cout << "Punto y Fama: ";
+        for(int i=0; i<4; i++)
+        {
+            if(answers[i]=='P' || answers[i]=='F')
+                cout << answers[i];
+        }
+        cout << endl;
+
+        cout << endl << "Intento #" << counter+2;
+
+        if(answers[0]=='F' && answers[3]=='F')
+        {
+            cout << endl << "Ha ganado el juego de Punto y Fama!" << endl << "El numero aleatorio era: " << randomNum << endl;
+            break;
+        }
+
+        for(int i=0; i<4; i++)
+            answers[i] = ' ';
+
         cout << endl;
     }
-    cout << counter << endl;
+    cout << "El numero total de intentos fue: " << counter+1 << endl;
 
 
 }
