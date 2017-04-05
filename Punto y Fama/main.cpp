@@ -109,10 +109,14 @@ int main()
 
         for(int i=0; i<4; i++)
             for(int k=0; k<4; k++)
-                if(arrayx[i] == randomarray[k])
-                {
+            {
+                if(arrayx[i] == randomarray[k] && i!=k)
+                    cout << "P";
 
-                }
+                else if(arrayx[i] == randomarray[k] && i==k)
+                    cout << "F";
+            }
+        cout << endl;
     }
     cout << counter << endl;
 
